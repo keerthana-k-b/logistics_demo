@@ -321,20 +321,32 @@ p {
 /* About Section */
 .about {
   background: linear-gradient(180deg, #f7f4ee 0%, #efe9df 100%);
-  padding: calc(var(--tab-h) + 120px) 6% 120px;
+  /* padding bottom gets +var(--tab-h) so content isn't cut off by the bottom tab */
+  padding: calc(var(--tab-h) + 120px) 6% calc(var(--tab-h) + 120px);
   position: relative;
   z-index: 5;
   margin-top: calc(var(--tab-h) * -1 - 2px); 
   
+  /* 
+   CLIP-PATH EXPLANATION:
+   Top points (0-5) form the top notch cut into the section.
+   Bottom points (6-11) form the bottom tab extending down from the section.
+  */
   clip-path: polygon(
+    /* TOP NOTCH */
     0% 0%, 
     var(--tab-left) 0%, 
     var(--tab-left) var(--tab-h), 
     var(--tab-right) var(--tab-h), 
     var(--tab-right) 0%, 
     100% 0%, 
-    100% 100%, 
-    0% 100%
+    /* BOTTOM TAB */
+    100% calc(100% - var(--tab-h)), 
+    var(--tab-right) calc(100% - var(--tab-h)), 
+    var(--tab-right) 100%, 
+    var(--tab-left) 100%, 
+    var(--tab-left) calc(100% - var(--tab-h)), 
+    0% calc(100% - var(--tab-h))
   );
 }
 
@@ -530,6 +542,47 @@ p {
   flex-shrink: 0;
 }
 
+/* Services Section (Placeholder) */
+.services {
+  background-color: #e5e5e5;
+  padding: calc(var(--tab-h) + 120px) 6% 120px;
+  position: relative;
+  z-index: 4;
+  margin-top: calc(var(--tab-h) * -1 - 2px); /* overlap with about's bottom tab */
+  
+  /* 
+   CLIP-PATH EXPLANATION (Services Top Notch):
+   Matches the about section's bottom tab for a seamless interlock.
+  */
+  clip-path: polygon(
+    0% 0%, 
+    var(--tab-left) 0%, 
+    var(--tab-left) var(--tab-h), 
+    var(--tab-right) var(--tab-h), 
+    var(--tab-right) 0%, 
+    100% 0%, 
+    100% 100%, 
+    0% 100%
+  );
+}
+
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.services h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.services p {
+  color: #475569;
+  font-size: 1.125rem;
+}
+
 /* Responsive Styles */
 
 @media (max-width: 767px) {
@@ -547,6 +600,12 @@ p {
     clip-path: none !important;
     padding-top: 64px;
     padding-bottom: 64px;
+    margin-top: 0;
+  }
+  
+  .services {
+    clip-path: none !important;
+    padding-top: 64px;
     margin-top: 0;
   }
   
