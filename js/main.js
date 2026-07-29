@@ -8,15 +8,85 @@ document.addEventListener('DOMContentLoaded', () => {
     video.removeAttribute('autoplay');
   }
 
-  // Navbar Scroll Effect
+  // Navbar Scroll Effect (Hide on Scroll Down, Show on Scroll Up)
   const navbar = document.getElementById('navbar');
   if (navbar) {
+    let lastScrollY = window.scrollY;
+    
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
+      const currentScrollY = window.scrollY;
+      
+      // Add translucent background class
+      if (currentScrollY > 50) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
+      
+      // Hide/Show based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        // Scrolling down
+        navbar.classList.add('navbar-hidden');
+      } else {
+        // Scrolling up
+        navbar.classList.remove('navbar-hidden');
+      }
+      
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  }
+
+  // Active Navigation State (Intersection Observer)
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"], .mobile-nav-links a[href^="#"]');
+  
+  if (sections.length > 0 && navLinks.length > 0) {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px', // Trigger when section hits middle of screen
+      threshold: 0
+    };
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const currentId = entry.target.getAttribute('id');
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+    
+    sections.forEach(section => sectionObserver.observe(section));
+  }
+
+  // Mobile Menu Logic
+  const mobileBtn = document.querySelector('.mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+  
+  if (mobileBtn && mobileMenu) {
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('active');
+      if (mobileMenu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+    
+    mobileBtn.addEventListener('click', toggleMobileMenu);
+    
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('active')) {
+          toggleMobileMenu();
+        }
+      });
     });
   }
 
@@ -149,5 +219,97 @@ document.addEventListener('DOMContentLoaded', () => {
       item.style.transform = 'none';
       item.style.transition = 'none';
     });
+  }
+  
+  // --- About Section Progressive Word Highlight ---
+  const aboutSection = document.getElementById('about');
+  const highlightWords = document.querySelectorAll('.highlight-word');
+  
+  if (aboutSection && highlightWords.length > 0 && !prefersReducedMotion) {
+    let highlightTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!highlightTicking) {
+        window.requestAnimationFrame(() => {
+          const rect = aboutSection.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          
+          // Calculate how far the section is into the viewport
+          // Start highlighting when top is at 80% of window height
+          // Finish highlighting when top is at 20% of window height
+          const start = windowHeight * 0.8;
+          const end = windowHeight * 0.2;
+          
+          let progress = (start - rect.top) / (start - end);
+          progress = Math.max(0, Math.min(1, progress));
+          
+          highlightWords.forEach((word, index) => {
+            // Distribute the words evenly across the progress range
+            const threshold = (index + 1) / highlightWords.length;
+            if (progress >= threshold) {
+              word.classList.add('active');
+            } else {
+              word.classList.remove('active');
+            }
+          });
+          
+          // Headline Parallax Reveal
+          const aboutHeadline = aboutSection.querySelector('.about-headline');
+          if (aboutHeadline) {
+            const yOffset = 15 * (1 - progress);
+            // Minimum opacity of 0.1 so it doesn't vanish entirely if you scroll up quickly
+            const opacity = Math.max(0.1, progress); 
+            aboutHeadline.style.transform = `translateY(${yOffset}px)`;
+            aboutHeadline.style.opacity = opacity;
+          }
+          
+          // Subtle Parallax for the right content area
+          const aboutRight = aboutSection.querySelector('.about-right');
+          if (aboutRight) {
+            // Move up to -20px as you scroll through
+            aboutRight.style.transform = `translateY(${progress * -20}px)`;
+          }
+          highlightTicking = false;
+        });
+        highlightTicking = true;
+      }
+    }, { passive: true });
+  }
+
+  // --- Services Sticky In-Place Swap ---
+  const track = document.getElementById('services-track');
+  const panels = document.querySelectorAll('.service-panel');
+  
+  if (track && panels.length > 0 && !prefersReducedMotion) {
+    let serviceTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!serviceTicking) {
+        window.requestAnimationFrame(() => {
+          const trackRect = track.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          
+          // Calculate progress from 0 to 1
+          const scrollDistance = trackRect.height - windowHeight;
+          let progress = -trackRect.top / scrollDistance;
+          progress = Math.max(0, Math.min(1, progress));
+          
+          // Determine which panel should be active (0 to panels.length - 1)
+          let activeIndex = Math.floor(progress * panels.length);
+          if (activeIndex >= panels.length) {
+            activeIndex = panels.length - 1;
+          }
+          
+          panels.forEach((p, i) => {
+            if(i === activeIndex) {
+              p.classList.add('active');
+            } else {
+              p.classList.remove('active');
+            }
+          });
+          
+          serviceTicking = false;
+        });
+        serviceTicking = true;
+      }
+    }, { passive: true });
   }
 });

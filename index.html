@@ -22,8 +22,26 @@
         <a href="#">Contact</a>
       </div>
       <div class="nav-actions">
-        <button class="btn btn-teal nav-cta">Get a Quote</button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
+    </div>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+      <div class="mobile-nav-links">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#">Track Shipment</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
     </div>
   </nav>
 
@@ -38,8 +56,8 @@
     </div>
 
     <div class="hero-content">
-      <div class="eyebrow teal-outline">LICENSED &middot; TRUSTED &middot; TRANSPARENT</div>
-      <h1>Global Logistics,<br>Delivered with Precision</h1>
+      <div class="eyebrow teal-outline">Licensed. Trusted. Transparent.</div>
+      <h1>Global Freight<br>Forwarding & Customs<br>Brokerage</h1>
       <div class="hero-actions">
         <button class="btn btn-teal">Request a Quote</button>
         <button class="btn btn-outline">Track a Shipment</button>
@@ -93,92 +111,160 @@
 
   <!-- ABOUT SECTION -->
   <section class="about" id="about">
+    <div class="up-notch-divider" style="color: #0A1628; filter: drop-shadow(0 -5px 15px rgba(0,0,0,0.15));">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <path d="M0,60 L120,60 L120,0 L180,0 L180,60 L1440,60 Z" fill="currentColor"/>
+      </svg>
+    </div>
     <div class="about-container">
-      <div class="about-grid">
-        <div class="about-text">
-          <div class="eyebrow dark" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #B8C2D0;">About Us</div>
-          <h2>Global reach in 98+ countries with a strong U.S. <span class="text-teal">presence.</span></h2>
-          <p>We are a licensed freight forwarding and customs brokerage operating across 98+ countries. Our mission is to simplify supply chains by providing transparent, efficient, and reliable logistics solutions tailored to your unique needs. With decades of industry expertise, we ensure your cargo reaches its destination safely and on time.</p>
-          <button class="btn btn-outline">More About Us <span class="arrow">&rarr;</span></button>
-          <!-- Spacer for scrollytelling -->
-          <div class="scrolly-spacer"></div>
+      <div class="about-content-grid">
+        <!-- Left Column -->
+        <div class="about-left">
+          <h3 class="about-label">About Us</h3>
+          <p class="about-description">Trusted by Fortune 500 and mid-market leaders, LOGISTICS provides licensed freight forwarding and customs brokerage with transparency, compliance, and efficiency.</p>
         </div>
         
-        <div class="about-stats sticky-stats">
-          <div class="stat-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stat-icon"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            <div class="stat-content">
-              <h4>98+</h4>
-              <p>Countries Served</p>
-            </div>
-          </div>
-          <div class="stat-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stat-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-            <div class="stat-content">
-              <h4>24/7</h4>
-              <p>Live Tracking</p>
-            </div>
-          </div>
-          <div class="stat-card">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="stat-icon"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-            <div class="stat-content">
-              <h4>15+ Yrs</h4>
-              <p>Years of Experience</p>
-            </div>
-          </div>
+        <!-- Right Column -->
+        <div class="about-right">
+          <h2 class="about-headline">
+            Global reach in 98+ countries<br>with a strong U.S. presence.<br>
+            Complete services: 
+            <span class="highlight-word">ocean,</span> 
+            <span class="highlight-word">air,</span> 
+            <span class="highlight-word">customs,</span> 
+            <span class="highlight-word">trucking,</span> 
+            <span class="highlight-word">warehousing,</span> 
+            and <span class="highlight-word">project cargo.</span>
+          </h2>
+          <button class="btn btn-outline" style="margin-top: 2rem;">More About Us</button>
         </div>
       </div>
       
-      <!-- Features Strip -->
-      <div class="features-strip">
-        <div class="feature-item reveal-item">
-          <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-          <h4>Global Network</h4>
-          <p>Offices and partners spanning 98+ countries.</p>
-        </div>
-        <div class="feature-item reveal-item" style="transition-delay: 0.1s">
-          <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <h4>Real-Time Visibility</h4>
-          <p>Live shipment tracking from origin to destination.</p>
-        </div>
-        <div class="feature-item reveal-item" style="transition-delay: 0.2s">
-          <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-          <h4>Compliance First</h4>
-          <p>Licensed, bonded, and fully audited operations.</p>
-        </div>
-      </div>
-      
-      <!-- Badges Row -->
-      <div class="badges-row">
-        <div class="badge">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          TIA
-        </div>
-        <div class="badge">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          NMFC
-        </div>
-        <div class="badge">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          CBP
-        </div>
-        <div class="badge">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          FMC
-        </div>
-        <div class="badge">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          ISO 9001
+      <!-- Badges Row Marquee -->
+      <div class="badges-marquee-container">
+        <div class="badges-marquee">
+          <!-- Set 1 -->
+          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>TIA</div>
+          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>NMFC</div>
+          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 17 22 12"></polyline></svg>CBP</div>
+          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><circle cx="12" cy="12" r="10"></circle><path d="M16 12l-4-4-4 4M12 8v8"></path></svg>FMC</div>
+          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>ISO 9001</div>
+          
+          <!-- Set 2 (Duplicate for infinite scroll) -->
+          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>TIA</div>
+          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>NMFC</div>
+          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 17 22 12"></polyline></svg>CBP</div>
+          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><circle cx="12" cy="12" r="10"></circle><path d="M16 12l-4-4-4 4M12 8v8"></path></svg>FMC</div>
+          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>ISO 9001</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES SECTION (PLACEHOLDER) -->
+  <!-- SERVICES SECTION (SCROLL TRACK) -->
   <section class="services" id="services">
-    <div class="services-container">
-      <h2>Our Services</h2>
-      <p>Comprehensive logistics solutions tailored to your unique supply chain needs.</p>
+    <div class="up-notch-divider" style="color: #e5e5e5; filter: drop-shadow(0 -5px 15px rgba(0,0,0,0.1));">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <path d="M0,60 L120,60 L120,0 L180,0 L180,60 L1440,60 Z" fill="currentColor"/>
+      </svg>
+    </div>
+    
+    <div class="services-header">
+      <h2 class="text-teal" style="font-size: clamp(2.5rem, 5vw, 4rem); text-align: center; margin-bottom: 5rem;">Our Core Solutions for<br><span class="text-dark" style="color: #0A1628;">Complex Logistics Demands</span></h2>
+    </div>
+
+    <!-- 500vh Scroll Track -->
+    <div class="services-scroll-track" id="services-track">
+      
+      <!-- Sticky Container -->
+      <div class="services-sticky-container">
+        
+        <!-- Panel 1 -->
+        <div class="service-panel active">
+          <div class="service-text-half">
+            <span class="service-num">01</span>
+            <div class="service-text">
+              <h3>Ocean Freight</h3>
+              <p>Full-container, partial, and specialized ocean freight solutions with global port coverage and regulatory compliance.</p>
+              <a href="#" class="see-more">SEE MORE</a>
+            </div>
+          </div>
+          <div class="service-media-half">
+            <div class="sticky-image-container">
+              <img src="assets/images/thumb-ocean.jpg" alt="Ocean Freight">
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2 -->
+        <div class="service-panel">
+          <div class="service-text-half">
+            <span class="service-num">02</span>
+            <div class="service-text">
+              <h3>Air Freight</h3>
+              <p>Fast, priority air cargo for urgent shipments including consolidated, direct, and hand-carry options.</p>
+              <a href="#" class="see-more">SEE MORE</a>
+            </div>
+          </div>
+          <div class="service-media-half">
+            <div class="sticky-image-container">
+              <img src="assets/images/thumb-air.jpg" alt="Air Freight">
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3 -->
+        <div class="service-panel">
+          <div class="service-text-half">
+            <span class="service-num">03</span>
+            <div class="service-text">
+              <h3>Customs Brokerage</h3>
+              <p>Licensed U.S. customs brokerage with expert handling of entries, duty drawbacks, and compliance advisory.</p>
+              <a href="#" class="see-more">SEE MORE</a>
+            </div>
+          </div>
+          <div class="service-media-half">
+            <div class="sticky-image-container">
+              <img src="assets/images/thumb-customs.jpg" alt="Customs Brokerage">
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 4 -->
+        <div class="service-panel">
+          <div class="service-text-half">
+            <span class="service-num">04</span>
+            <div class="service-text">
+              <h3>Domestic Trucking</h3>
+              <p>Nationwide freight transport across the U.S. with FTL, LTL, bonded trucking, and last-mile delivery options.</p>
+              <a href="#" class="see-more">SEE MORE</a>
+            </div>
+          </div>
+          <div class="service-media-half">
+            <div class="sticky-image-container">
+              <img src="assets/images/thumb-warehouse.jpg" alt="Domestic Trucking">
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 5 -->
+        <div class="service-panel">
+          <div class="service-text-half">
+            <span class="service-num">05</span>
+            <div class="service-text">
+              <h3>Project Cargo</h3>
+              <p>End-to-end logistics for oversized, heavy, or sensitive cargo from site planning to secure delivery.</p>
+              <a href="#" class="see-more">SEE MORE</a>
+            </div>
+          </div>
+          <div class="service-media-half">
+            <div class="sticky-image-container">
+              <img src="assets/images/thumb-project.jpg" alt="Project Cargo">
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
