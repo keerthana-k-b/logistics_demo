@@ -20,10 +20,76 @@
 }
 
 body {
-  font-family: var(--font-main);
-  background-color: var(--color-white);
-  color: var(--color-primary);
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-light);
+  color: var(--color-text);
   overflow-x: hidden;
+  font-family: var(--font-main);
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 100;
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.navbar.scrolled {
+  background-color: #0A1628;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #2DD4BF;
+}
+
+.nav-cta {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 767px) {
+  .nav-links, .nav-actions {
+    display: none;
+  }
 }
 
 /* Typography */
@@ -114,6 +180,18 @@ p {
   transform: translateY(-2px);
 }
 
+.btn-teal {
+  background-color: #2DD4BF;
+  color: #0A1628;
+  border: 1px solid #2DD4BF;
+}
+
+.btn-teal:hover {
+  background-color: #14b8a6;
+  border-color: #14b8a6;
+  transform: translateY(-2px);
+}
+
 .btn-outline.dark-outline {
   border: 1.5px solid #1e293b;
   color: #1e293b;
@@ -142,44 +220,21 @@ p {
   width: 100%;
   z-index: 10;
   margin-bottom: 0;
-  /* Normal min-height 90vh, plus the extra tab height */
-  min-height: calc(90vh + var(--tab-h));
+  min-height: 90vh;
   display: flex;
   align-items: center;
   padding: 4rem 6%;
-  
-  /* 
-   CLIP-PATH EXPLANATION (Hero Bottom Tab):
-   1. (0% 0%) -> Top left corner
-   2. (100% 0%) -> Top right corner
-   3. (100% calc(100% - var(--tab-h))) -> Bottom right corner of the normal section
-   4. (var(--tab-right) calc(100% - var(--tab-h))) -> Move left along normal bottom to the right edge of the tab
-   5. (var(--tab-right) 100%) -> Go straight down to form the right wall of the tab
-   6. (var(--tab-left) 100%) -> Move left along the bottom edge of the tab
-   7. (var(--tab-left) calc(100% - var(--tab-h))) -> Go straight up to form the left wall of the tab
-   8. (0% calc(100% - var(--tab-h))) -> Move left to finish the normal bottom edge (bottom left corner)
-  */
-  clip-path: polygon(
-    0% 0%, 
-    100% 0%, 
-    100% calc(100% - var(--tab-h)), 
-    var(--tab-right) calc(100% - var(--tab-h)), 
-    var(--tab-right) 100%, 
-    var(--tab-left) 100%, 
-    var(--tab-left) calc(100% - var(--tab-h)), 
-    0% calc(100% - var(--tab-h))
-  );
-  
-  /* Ensures nothing sticks outside the clip-path */
+  background-color: #0A1628;
   overflow: hidden;
 }
 
 .video-container {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
 }
 
 .hero-video {
@@ -195,21 +250,30 @@ p {
   inset: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(5,10,21,0.9) 0%, rgba(5,10,21,0.3) 100%);
+  background: linear-gradient(to right, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.6) 40%, rgba(10,22,40,0.3) 100%);
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
+  width: 55%;
   max-width: 800px;
-  /* Push slightly up to visually balance the added tab height */
-  transform: translateY(calc(var(--tab-h) * -0.5));
 }
 
 .hero-actions {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.text-teal {
+  color: #2DD4BF;
+}
+
+.eyebrow.teal-outline {
+  border: 1px solid #2DD4BF;
+  color: #2DD4BF;
+  background-color: transparent;
 }
 
 /* Carousel Card */
@@ -236,20 +300,28 @@ p {
 }
 
 .slide-card {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(10, 22, 40, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 1rem;
+  /* Use inset shadow because clip-path will cut outer borders */
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1), 0 20px 40px rgba(0,0,0,0.3);
   padding: 1.5rem;
   color: var(--color-white);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
   display: flex;
   align-items: center;
   gap: 1rem;
   width: 380px;
   flex-shrink: 0;
   transition: opacity 0.6s ease;
+  /* Top-left folder tab notch shape */
+  clip-path: polygon(
+    0 0, 
+    40% 0, 
+    45% 20px, 
+    100% 20px, 
+    100% 100%, 
+    0 100%
+  );
 }
 
 .slide-card:not(.active) {
@@ -320,34 +392,10 @@ p {
 
 /* About Section */
 .about {
-  background: linear-gradient(180deg, #f7f4ee 0%, #efe9df 100%);
-  /* padding bottom gets +var(--tab-h) so content isn't cut off by the bottom tab */
-  padding: calc(var(--tab-h) + 120px) 6% calc(var(--tab-h) + 120px);
+  background-color: #0A1628;
+  padding: 120px 6%;
   position: relative;
   z-index: 5;
-  margin-top: calc(var(--tab-h) * -1 - 2px); 
-  
-  /* 
-   CLIP-PATH EXPLANATION:
-   Top points (0-5) form the top notch cut into the section.
-   Bottom points (6-11) form the bottom tab extending down from the section.
-  */
-  clip-path: polygon(
-    /* TOP NOTCH */
-    0% 0%, 
-    var(--tab-left) 0%, 
-    var(--tab-left) var(--tab-h), 
-    var(--tab-right) var(--tab-h), 
-    var(--tab-right) 0%, 
-    100% 0%, 
-    /* BOTTOM TAB */
-    100% calc(100% - var(--tab-h)), 
-    var(--tab-right) calc(100% - var(--tab-h)), 
-    var(--tab-right) 100%, 
-    var(--tab-left) 100%, 
-    var(--tab-left) calc(100% - var(--tab-h)), 
-    0% calc(100% - var(--tab-h))
-  );
 }
 
 .about-bg-graphic {
@@ -393,22 +441,31 @@ p {
     display: grid;
     grid-template-columns: 45% 55%;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
   }
 }
 
+.scrolly-spacer {
+  height: 50vh;
+}
+
+.sticky-stats {
+  position: sticky;
+  top: 120px;
+}
+
 .about-text h2 {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.1;
-  color: #1e293b;
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
+  line-height: 1.2;
+  color: #ffffff;
   margin-bottom: 1.5rem;
 }
 
 .about-text p {
-  color: #475569;
+  color: #B8C2D0;
   font-size: 1.125rem;
   line-height: 1.7;
-  margin-bottom: 1.75rem; /* Reduced to connect better with the button */
+  margin-bottom: 1.75rem;
 }
 
 .about-stats {
@@ -418,11 +475,11 @@ p {
 }
 
 .stat-card {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 1.25rem 1.5rem; /* Reduced padding to hug content */
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.25rem 1.5rem;
   border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: flex-start;
   gap: 1rem;
@@ -431,11 +488,11 @@ p {
 
 .stat-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
 }
 
 .stat-icon {
-  color: var(--color-accent);
+  color: #2DD4BF;
   flex-shrink: 0;
   margin-top: 0.25rem;
 }
@@ -443,7 +500,7 @@ p {
 .stat-content h4 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--color-accent);
+  color: #ffffff;
   margin: 0;
   line-height: 1;
 }
@@ -452,7 +509,7 @@ p {
   margin: 0;
   font-size: 1rem;
   font-weight: 500;
-  color: #64748b;
+  color: #B8C2D0;
   margin-top: 0.25rem;
 }
 
@@ -480,20 +537,20 @@ p {
 .feature-icon {
   width: 40px;
   height: 40px;
-  color: var(--color-accent);
+  color: #2DD4BF;
   margin-bottom: 1rem;
 }
 
 .feature-item h4 {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1e293b;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
 .feature-item p {
   font-size: 1rem;
-  color: #475569;
+  color: #B8C2D0;
   line-height: 1.6;
   margin: 0;
 }
@@ -520,13 +577,13 @@ p {
   gap: 1.5rem;
   padding-top: 2.5rem;
   padding-bottom: 3.5rem;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .badge {
-  background: #eef2f6; /* Light navy tint */
-  border: 1px solid #cbd5e1;
-  color: #475569;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #ffffff;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -538,32 +595,16 @@ p {
 }
 
 .badge-icon {
-  color: #64748b;
+  color: #ffffff;
   flex-shrink: 0;
 }
 
 /* Services Section (Placeholder) */
 .services {
   background-color: #e5e5e5;
-  padding: calc(var(--tab-h) + 120px) 6% 120px;
+  padding: 120px 6%;
   position: relative;
   z-index: 4;
-  margin-top: calc(var(--tab-h) * -1 - 2px); /* overlap with about's bottom tab */
-  
-  /* 
-   CLIP-PATH EXPLANATION (Services Top Notch):
-   Matches the about section's bottom tab for a seamless interlock.
-  */
-  clip-path: polygon(
-    0% 0%, 
-    var(--tab-left) 0%, 
-    var(--tab-left) var(--tab-h), 
-    var(--tab-right) var(--tab-h), 
-    var(--tab-right) 0%, 
-    100% 0%, 
-    100% 100%, 
-    0% 100%
-  );
 }
 
 .services-container {
@@ -586,27 +627,18 @@ p {
 /* Responsive Styles */
 
 @media (max-width: 767px) {
-  /* Disable clip-paths on mobile */
   .hero {
-    clip-path: none !important;
-    min-height: 90vh; /* Revert to normal min-height */
     padding-top: 6rem;
-    padding-bottom: 4rem;
-    flex-direction: column;
-    justify-content: center;
   }
   
   .about {
-    clip-path: none !important;
     padding-top: 64px;
     padding-bottom: 64px;
-    margin-top: 0;
   }
   
   .services {
-    clip-path: none !important;
     padding-top: 64px;
-    margin-top: 0;
+    padding-bottom: 64px;
   }
   
   /* Swap video for image on mobile */
