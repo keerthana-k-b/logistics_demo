@@ -113,8 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const slidesContainer = document.getElementById('carousel-slides');
 
   function updateCarousel() {
-    // Calculate translation offset: each slide is 380px wide + 1rem (16px) gap
-    const slideWidth = 380;
+    // Calculate translation offset: each slide is 420px wide + 1rem (16px) gap
+    const slideWidth = 420;
     const gap = 16;
     const offset = -(slideWidth + gap) * currentIndex;
     

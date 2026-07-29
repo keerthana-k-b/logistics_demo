@@ -13,16 +13,12 @@
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <div class="nav-links">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#">Track Shipment</a>
-        <a href="#">Contact</a>
+      <div class="nav-logo">
+        <a href="#">TRANZPORT</a>
       </div>
       <div class="nav-actions">
         <button class="mobile-menu-btn" aria-label="Toggle menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -41,7 +37,6 @@
         <a href="#">Contact</a>
       </div>
     </div>
-    </div>
   </nav>
 
   <!-- HERO SECTION -->
@@ -58,27 +53,34 @@
       <div class="eyebrow teal-outline">Licensed. Trusted. Transparent.</div>
       <h1>Global Freight<br>Forwarding & Customs<br>Brokerage</h1>
       <div class="hero-actions">
-        <button class="btn btn-teal">Request a Quote</button>
+        <button class="btn btn-primary">Request a Quote</button>
         <button class="btn btn-outline">Track a Shipment</button>
       </div>
     </div>
 
     <!-- CAROUSEL -->
     <div class="hero-carousel">
+      <div class="carousel-pagination">
+        <span class="slide-num current" id="current-slide">01</span>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <span class="slide-num total">04</span>
+      </div>
       <div class="carousel-viewport">
         <div class="slides" id="carousel-slides">
           <div class="slide-card active">
             <img src="assets/images/thumb-ocean.jpg" alt="Ocean Freight" class="slide-thumb">
             <div class="slide-content">
               <h3>Ocean Freight</h3>
-              <p>Reliable FCL and LCL shipping worldwide.</p>
+              <p>Full-container, partial, and specialized ocean freight solutions</p>
             </div>
           </div>
           <div class="slide-card">
             <img src="assets/images/thumb-air.jpg" alt="Air Freight" class="slide-thumb">
             <div class="slide-content">
               <h3>Air Freight</h3>
-              <p>Expedited shipping for time-critical cargo.</p>
+              <p>Fast, priority air cargo for urgent shipments including</p>
             </div>
           </div>
           <div class="slide-card">
@@ -97,14 +99,6 @@
           </div>
         </div>
       </div>
-      
-      <div class="carousel-controls">
-        <span class="slide-num current" id="current-slide">01</span>
-        <div class="progress-track">
-          <div class="progress-fill" id="progress-fill"></div>
-        </div>
-        <span class="slide-num total">04</span>
-      </div>
     </div>
   </section>
 
@@ -120,22 +114,20 @@
         <!-- Left Column -->
         <div class="about-left">
           <h3 class="about-label">About Us</h3>
-          <p class="about-description">Trusted by Fortune 500 and mid-market leaders, LOGISTICS provides licensed freight forwarding and customs brokerage with transparency, compliance, and efficiency.</p>
         </div>
         
         <!-- Right Column -->
         <div class="about-right">
           <h2 class="about-headline">
-            Global reach in 98+ countries<br>with a strong U.S. presence.<br>
-            Complete services: 
-            <span class="highlight-word">ocean,</span> 
-            <span class="highlight-word">air,</span> 
-            <span class="highlight-word">customs,</span> 
-            <span class="highlight-word">trucking,</span> 
-            <span class="highlight-word">warehousing,</span> 
-            and <span class="highlight-word">project cargo.</span>
+            Global reach in 98+ countries<br>with a strong U.S. <span class="highlight-word">presence.</span>
           </h2>
-          <button class="btn btn-outline" style="margin-top: 2rem;">More About Us</button>
+          <p class="about-services-list">
+            Complete services: ocean, air, customs, trucking, warehousing, and project cargo.
+          </p>
+          <div class="about-description-box">
+            <p class="about-description">Trusted by Fortune 500 and mid-market leaders, LOGISTICS provides licensed freight forwarding and customs brokerage with transparency, compliance, and efficiency.</p>
+          </div>
+          <button class="btn btn-outline btn-sm" style="margin-top: 2rem;">More About Us</button>
         </div>
       </div>
       
