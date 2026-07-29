@@ -242,25 +242,37 @@ document.addEventListener('DOMContentLoaded', () => {
           let progress = (start - rect.top) / (start - end);
           progress = Math.max(0, Math.min(1, progress));
           
+          // Dual Phase Animation:
+          // Phase 1 (0.0 - 0.4): Left-to-right text reveal and translateY
+          // Phase 2 (0.4 - 1.0): Sequential word highlighting
+          
+          let revealProgress = Math.min(1, progress / 0.4);
+          let highlightProgress = Math.max(0, (progress - 0.4) / 0.6);
+          
+          const aboutHeadline = aboutSection.querySelector('.about-headline');
+          if (aboutHeadline) {
+            // Subtle 10px upward movement during Phase 1
+            const yOffset = 10 * (1 - revealProgress);
+            aboutHeadline.style.transform = `translateY(${yOffset}px)`;
+            
+            // Soft left-to-right wipe mask
+            const percent = revealProgress * 100;
+            const maskGradient = `linear-gradient(to right, rgba(0,0,0,1) ${percent}%, rgba(0,0,0,0) ${Math.min(100, percent + 10)}%)`;
+            aboutHeadline.style.webkitMaskImage = maskGradient;
+            aboutHeadline.style.maskImage = maskGradient;
+          }
+          
           highlightWords.forEach((word, index) => {
-            // Distribute the words evenly across the progress range
+            // Distribute the words evenly across the highlightProgress range
             const threshold = (index + 1) / highlightWords.length;
-            if (progress >= threshold) {
+            if (highlightProgress >= threshold) {
               word.classList.add('active');
             } else {
               word.classList.remove('active');
             }
           });
           
-          // Headline Parallax Reveal
-          const aboutHeadline = aboutSection.querySelector('.about-headline');
-          if (aboutHeadline) {
-            const yOffset = 15 * (1 - progress);
-            // Minimum opacity of 0.1 so it doesn't vanish entirely if you scroll up quickly
-            const opacity = Math.max(0.1, progress); 
-            aboutHeadline.style.transform = `translateY(${yOffset}px)`;
-            aboutHeadline.style.opacity = opacity;
-          }
+          // (Removed old parallax logic since it is now unified in Phase 1 above)
           
           // Subtle Parallax for the right content area
           const aboutRight = aboutSection.querySelector('.about-right');
@@ -293,18 +305,20 @@ document.addEventListener('DOMContentLoaded', () => {
           progress = Math.max(0, Math.min(1, progress));
           
           // Determine which panel should be active (0 to panels.length - 1)
-          let activeIndex = Math.floor(progress * panels.length);
-          if (activeIndex >= panels.length) {
-            activeIndex = panels.length - 1;
-          }
-          
-          panels.forEach((p, i) => {
-            if(i === activeIndex) {
-              p.classList.add('active');
-            } else {
-              p.classList.remove('active');
+          if (window.innerWidth >= 768) {
+            let activeIndex = Math.floor(progress * panels.length);
+            if (activeIndex >= panels.length) {
+              activeIndex = panels.length - 1;
             }
-          });
+            
+            panels.forEach((p, i) => {
+              if(i === activeIndex) {
+                p.classList.add('active');
+              } else {
+                p.classList.remove('active');
+              }
+            });
+          }
           
           serviceTicking = false;
         });
