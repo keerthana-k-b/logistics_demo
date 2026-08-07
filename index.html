@@ -1,264 +1,819 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Licensed freight forwarding and customs brokerage operating across 98+ countries.">
-  <title>Logistics & Freight Forwarding</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tranzport - Global Freight Forwarding</title>
+    <meta name="description"
+        content="Global reach in 98+ countries. Complete logistics services including ocean, air, customs, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <!-- Floating Navigation Bar -->
+    <nav class="floating-navbar" id="floatingNavbar">
+        <ul class="floating-nav-links">
+            <li><a href="#about" class="floating-link" data-section="about">About Us</a></li>
+            <li><a href="#core-solutions" class="floating-link" data-section="core-solutions">Services</a></li>
+            <li><a href="#footprint-scroll-section" class="floating-link"
+                    data-section="footprint-scroll-section">Operations</a></li>
+            <li><a href="#contact" class="floating-link" data-section="contact">Testimonials</a></li>
+        </ul>
+    </nav>
 
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <a href="#">TRANZPORT</a>
-      </div>
-      <div class="nav-actions">
-        <button class="mobile-menu-btn" aria-label="Toggle menu">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-    
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobile-menu">
-      <div class="mobile-nav-links">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#">Track Shipment</a>
-        <a href="#">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <section class="hero" id="hero">
-    <!-- Video background -->
-    <div class="video-container">
-      <video class="hero-video" id="hero-video" autoplay muted loop playsinline poster="assets/images/poster.jpg">
-        <source src="assets/videos/14189430_1920_1080_60fps.mp4" type="video/mp4">
-      </video>
-      <div class="video-overlay"></div>
+    <div class="grid-overlay">
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
+        <div class="grid-line"></div>
     </div>
 
-    <div class="hero-content">
-      <div class="eyebrow teal-outline">Licensed. Trusted. Transparent.</div>
-      <h1>Global Freight<br>Forwarding & Customs<br>Brokerage</h1>
-      <div class="hero-actions">
-        <button class="btn btn-primary">Request a Quote</button>
-        <button class="btn btn-outline">Track a Shipment</button>
-      </div>
+    <div class="hero-container">
+        <!-- Background Media -->
+        <div class="hero-bg notch-bottom">
+            <video autoplay muted loop playsinline class="bg-video">
+                <source src="14189430_1920_1080_60fps.mp4" type="video/mp4">
+                <img src="assets/hero_background_1785347805307.png" alt="Hero Background Fallback">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">TRANZPORT</div>
+            <button class="menu-btn" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Hero Content -->
+        <main class="hero-content">
+            <div class="hero-left">
+                <span class="subtitle">Licensed. Trusted. Transparent.</span>
+                <h1 class="title">Global Freight<br>Forwarding & Customs<br>Brokerage</h1>
+                <div class="hero-cta">
+                    <button class="btn btn-primary">Request a Quote</button>
+                    <button class="btn btn-secondary">Track a Shipment</button>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="services-slider">
+                    <!-- Progress bar/indicators -->
+                    <div class="slider-header">
+                        <span class="slide-num active">01</span>
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="slide-num">06</span>
+                    </div>
+
+                    <div class="carousel-wrapper">
+                        <div class="cards-container" id="slider">
+                            <!-- Card 1 -->
+                            <div class="service-card glass-panel">
+                                <div class="card-img-wrapper">
+                                    <img src="assets/ocean_freight_1785347817710.png" alt="Ocean Freight"
+                                        class="card-img">
+                                </div>
+                                <div class="card-info">
+                                    <h3>Ocean Freight</h3>
+                                    <p>Full-container, partial, and specialized ocean freight solutions</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="service-card glass-panel">
+                                <div class="card-img-wrapper">
+                                    <img src="assets/air_freight_1785347828155.png" alt="Air Freight" class="card-img">
+                                </div>
+                                <div class="card-info">
+                                    <h3>Air Freight</h3>
+                                    <p>Fast, priority access for urgent shipments including cargo</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="service-card glass-panel">
+                                <div class="card-img-wrapper">
+                                    <img src="assets/ocean_freight_1785347817710.png" alt="Customs Brokerage"
+                                        class="card-img">
+                                </div>
+                                <div class="card-info">
+                                    <h3>Customs Brokerage</h3>
+                                    <p>Navigating complex customs regulations and trade compliance</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="service-card glass-panel">
+                                <div class="card-img-wrapper">
+                                    <img src="assets/air_freight_1785347828155.png" alt="Trucking Services"
+                                        class="card-img">
+                                </div>
+                                <div class="card-info">
+                                    <h3>Trucking Services</h3>
+                                    <p>Reliable over-the-road transport and final mile delivery</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 5 -->
+                            <div class="service-card glass-panel">
+                                <div class="card-img-wrapper">
+                                    <img src="assets/ocean_freight_1785347817710.png" alt="Warehousing"
+                                        class="card-img">
+                                </div>
+                                <div class="card-info">
+                                    <h3>Warehousing</h3>
+                                    <p>Secure storage, inventory management, and distribution</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 6 -->
+                            <div class="service-card glass-panel">
+                                <div class="card-img-wrapper">
+                                    <img src="assets/air_freight_1785347828155.png" alt="Project Cargo"
+                                        class="card-img">
+                                </div>
+                                <div class="card-info">
+                                    <h3>Project Cargo</h3>
+                                    <p>Specialized handling for oversized and heavy-lift shipments</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
-    <!-- CAROUSEL -->
-    <div class="hero-carousel">
-      <div class="carousel-pagination">
-        <span class="slide-num current" id="current-slide">01</span>
-        <div class="progress-track">
-          <div class="progress-fill" id="progress-fill"></div>
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="about-container" id="about-container">
+            <div class="about-grid" id="about-grid">
+                <!-- Left Column: About Us -->
+                <div class="about-left-col" id="about-left-col">
+                    <div class="about-label" id="about-label">About Us</div>
+                    <p class="about-brief" id="about-brief">
+                        Trusted by Fortune 500 and mid-market leaders, Tranzport provides licensed freight forwarding
+                        and customs brokerage with transparency, reliability, and efficiency.
+                    </p>
+                </div>
+
+                <!-- Right Column: Heading & More About Us -->
+                <div class="about-right-col" id="about-right-col">
+                    <h2 id="about-heading">
+                        Global reach in 98+ countries<br>with a strong U.S. presence.
+                    </h2>
+                    <p class="about-lead" id="about-lead">
+                        Complete services: ocean, air, customs, <span class="highlight-green">trucking, warehousing, and
+                            project cargo.</span>
+                    </p>
+                    <button class="btn btn-outline" id="btn-more-about">More About Us</button>
+                </div>
+            </div>
+
+            <!-- Badges / Logos Marquee Container -->
+            <div class="badges-row" id="badges-row">
+                <div class="marquee-track">
+                    <!-- Logo Set 1 -->
+                    <div class="compliance-logo" id="logo-cbfaa" title="NCBFAA Member">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-dasharray="2 2" />
+                            <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path
+                                d="M50 12 A 38 38 0 0 1 88 50 A 38 38 0 0 1 50 88 A 38 38 0 0 1 12 50 A 38 38 0 0 1 50 12 Z"
+                                fill="none" stroke="currentColor" stroke-width="1" />
+                            <text x="50" y="55" font-family="'Inter', sans-serif" font-size="13" font-weight="900"
+                                text-anchor="middle" fill="currentColor" letter-spacing="1">CBFAA</text>
+                        </svg>
+                    </div>
+
+                    <div class="compliance-logo" id="logo-nmfc"
+                        title="NMFC Standard Carrier Alpha Code (SCAC) compliant">
+                        <svg class="logo-svg" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 42 C 40 42, 85 32, 110 22 C 90 32, 50 37, 20 37 Z" fill="currentColor" />
+                            <text x="55" y="34" font-family="'Inter', sans-serif" font-size="20" font-weight="900"
+                                font-style="italic" text-anchor="middle" fill="currentColor">NMFC</text>
+                        </svg>
+                    </div>
+
+                    <div class="compliance-logo" id="logo-tia" title="TIA Member">
+                        <svg class="logo-svg" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                            <text x="60" y="30" font-family="'Inter', sans-serif" font-size="26" font-weight="900"
+                                text-anchor="middle" fill="currentColor" letter-spacing="-1">TIA</text>
+                            <text x="60" y="42" font-family="'Inter', sans-serif" font-size="5" font-weight="800"
+                                text-anchor="middle" fill="currentColor" letter-spacing="0.5">TRANSPORTATION
+                                INTERMEDIARIES</text>
+                            <text x="60" y="48" font-family="'Inter', sans-serif" font-size="5" font-weight="800"
+                                text-anchor="middle" fill="currentColor" letter-spacing="0.5">ASSOCIATION</text>
+                            <path d="M 28 6 Q 60 16 92 6" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+
+                    <div class="compliance-logo" id="logo-dhs"
+                        title="U.S. Department of Homeland Security (C-TPAT / CBP)">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" />
+                            <circle cx="50" cy="50" r="41" fill="none" stroke="currentColor" stroke-width="0.75"
+                                stroke-dasharray="3 2" />
+                            <path
+                                d="M25 45 C35 35, 45 42, 50 48 C55 42, 65 35, 75 45 C70 55, 60 55, 50 55 C40 55, 30 55, 25 45 Z"
+                                fill="none" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M44 48 L56 48 L54 62 C54 66, 50 68, 50 68 C50 68, 46 66, 46 62 Z"
+                                fill="currentColor" opacity="0.7" />
+                            <path d="M44 48 L56 48 L54 62 C54 66, 50 68, 50 68 C50 68, 46 66, 46 62 Z" fill="none"
+                                stroke="currentColor" stroke-width="1.25" />
+                            <path d="M48 40 Q50 36 52 40 L50 44 Z" fill="currentColor" />
+                            <circle cx="50" cy="20" r="1.5" fill="currentColor" />
+                            <circle cx="35" cy="24" r="1.5" fill="currentColor" />
+                            <circle cx="65" cy="24" r="1.5" fill="currentColor" />
+                            <circle cx="24" cy="35" r="1.5" fill="currentColor" />
+                            <circle cx="76" cy="35" r="1.5" fill="currentColor" />
+                        </svg>
+                    </div>
+
+                    <div class="compliance-logo" id="logo-fmc" title="Federal Maritime Commission Licensed OTI">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" />
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="1" />
+                            <path d="M50 22 L50 68 M40 58 C 45 68, 55 68, 60 58 M35 58 L38 58 M62 58 L65 58" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="50" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path d="M43 36 L57 36" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path d="M42 42 L58 42 L56 56 Q50 62 50 62 Q50 62 44 56 Z" fill="none" stroke="currentColor"
+                                stroke-width="1.25" />
+                        </svg>
+                    </div>
+
+                    <!-- Logo Set 2 (Duplicate for Seamless Infinite Marquee Loop) -->
+                    <div class="compliance-logo" id="logo-cbfaa-dup" title="NCBFAA Member">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-dasharray="2 2" />
+                            <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path
+                                d="M50 12 A 38 38 0 0 1 88 50 A 38 38 0 0 1 50 88 A 38 38 0 0 1 12 50 A 38 38 0 0 1 50 12 Z"
+                                fill="none" stroke="currentColor" stroke-width="1" />
+                            <text x="50" y="55" font-family="'Inter', sans-serif" font-size="13" font-weight="900"
+                                text-anchor="middle" fill="currentColor" letter-spacing="1">CBFAA</text>
+                        </svg>
+                    </div>
+
+                    <div class="compliance-logo" id="logo-nmfc-dup"
+                        title="NMFC Standard Carrier Alpha Code (SCAC) compliant">
+                        <svg class="logo-svg" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 42 C 40 42, 85 32, 110 22 C 90 32, 50 37, 20 37 Z" fill="currentColor" />
+                            <text x="55" y="34" font-family="'Inter', sans-serif" font-size="20" font-weight="900"
+                                font-style="italic" text-anchor="middle" fill="currentColor">NMFC</text>
+                        </svg>
+                    </div>
+
+                    <div class="compliance-logo" id="logo-tia-dup" title="TIA Member">
+                        <svg class="logo-svg" viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg">
+                            <text x="60" y="30" font-family="'Inter', sans-serif" font-size="26" font-weight="900"
+                                text-anchor="middle" fill="currentColor" letter-spacing="-1">TIA</text>
+                            <text x="60" y="42" font-family="'Inter', sans-serif" font-size="5" font-weight="800"
+                                text-anchor="middle" fill="currentColor" letter-spacing="0.5">TRANSPORTATION
+                                INTERMEDIARIES</text>
+                            <text x="60" y="48" font-family="'Inter', sans-serif" font-size="5" font-weight="800"
+                                text-anchor="middle" fill="currentColor" letter-spacing="0.5">ASSOCIATION</text>
+                            <path d="M 28 6 Q 60 16 92 6" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+
+                    <div class="compliance-logo" id="logo-dhs-dup"
+                        title="U.S. Department of Homeland Security (C-TPAT / CBP)">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" />
+                            <circle cx="50" cy="50" r="41" fill="none" stroke="currentColor" stroke-width="0.75"
+                                stroke-dasharray="3 2" />
+                            <path
+                                d="M25 45 C35 35, 45 42, 50 48 C55 42, 65 35, 75 45 C70 55, 60 55, 50 55 C40 55, 30 55, 25 45 Z"
+                                fill="none" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M44 48 L56 48 L54 62 C54 66, 50 68, 50 68 C50 68, 46 66, 46 62 Z"
+                                fill="currentColor" opacity="0.7" />
+                            <path d="M44 48 L56 48 L54 62 C54 66, 50 68, 50 68 C50 68, 46 66, 46 62 Z" fill="none"
+                                stroke="currentColor" stroke-width="1.25" />
+                            <path d="M48 40 Q50 36 52 40 L50 44 Z" fill="currentColor" />
+                            <circle cx="50" cy="20" r="1.5" fill="currentColor" />
+                            <circle cx="35" cy="24" r="1.5" fill="currentColor" />
+                            <circle cx="65" cy="24" r="1.5" fill="currentColor" />
+                            <circle cx="24" cy="35" r="1.5" fill="currentColor" />
+                            <circle cx="76" cy="35" r="1.5" fill="currentColor" />
+                        </svg>
+                    </div>
+
+                    <div class="compliance-logo" id="logo-fmc-dup" title="Federal Maritime Commission Licensed OTI">
+                        <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" />
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" stroke-width="1" />
+                            <path d="M50 22 L50 68 M40 58 C 45 68, 55 68, 60 58 M35 58 L38 58 M62 58 L65 58" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            <circle cx="50" cy="22" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path d="M43 36 L57 36" fill="none" stroke="currentColor" stroke-width="2" />
+                            <path d="M42 42 L58 42 L56 56 Q50 62 50 62 Q50 62 44 56 Z" fill="none" stroke="currentColor"
+                                stroke-width="1.25" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
-        <span class="slide-num total">04</span>
-      </div>
-      <div class="carousel-viewport">
-        <div class="slides" id="carousel-slides">
-          <div class="slide-card active">
-            <img src="assets/images/thumb-ocean.jpg" alt="Ocean Freight" class="slide-thumb">
-            <div class="slide-content">
-              <h3>Ocean Freight</h3>
-              <p>Full-container, partial, and specialized ocean freight solutions</p>
-            </div>
-          </div>
-          <div class="slide-card">
-            <img src="assets/images/thumb-air.jpg" alt="Air Freight" class="slide-thumb">
-            <div class="slide-content">
-              <h3>Air Freight</h3>
-              <p>Fast, priority air cargo for urgent shipments including</p>
-            </div>
-          </div>
-          <div class="slide-card">
-            <img src="assets/images/thumb-customs.jpg" alt="Customs Brokerage" class="slide-thumb">
-            <div class="slide-content">
-              <h3>Customs Brokerage</h3>
-              <p>Seamless clearance and compliance.</p>
-            </div>
-          </div>
-          <div class="slide-card">
-            <img src="assets/images/thumb-warehouse.jpg" alt="Warehousing" class="slide-thumb">
-            <div class="slide-content">
-              <h3>Warehousing</h3>
-              <p>Secure storage and distribution solutions.</p>
-            </div>
-          </div>
+    </section>
+
+
+    <!-- OPERATIONAL FOOTPRINT MAP SECTION (PARALLEL SCROLL) -->
+    <section class="footprint-scroll-section" id="footprint-scroll-section">
+        <div class="footprint-sticky-container notch-bottom">
+            <section class="footprint" id="footprint">
+                <div class="footprint-grid">
+                    <!-- Left Column: Controls & Stats -->
+                    <div class="footprint-sidebar">
+                        <!-- Interactive timeline switcher -->
+                        <div class="footprint-timeline" id="footprint-timeline">
+                            <div class="timeline-dot active" data-map="world" id="timeline-dot-world">01</div>
+                            <div class="timeline-line">
+                                <div class="timeline-fill" id="timeline-fill"></div>
+                            </div>
+                            <div class="timeline-dot" data-map="us" id="timeline-dot-us">02</div>
+                        </div>
+
+                        <!-- Details Card -->
+                        <div class="footprint-info">
+                            <h2>Our Operational<br>Footprint</h2>
+                            <p class="footprint-subtitle">Offices, Warehouses, and Global Logistics Hubs</p>
+
+                            <div class="footprint-stats-card">
+                                <div class="stat-row">
+                                    <span class="stat-label">Service in</span>
+                                    <span class="stat-value">98 countries</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Warehouses in</span>
+                                    <span class="stat-value">9 U.S. locations</span>
+                                </div>
+                                <div class="stat-row">
+                                    <span class="stat-label">Member of</span>
+                                    <span class="stat-value">Corpac Group</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Interactive Vector Maps -->
+                    <div class="footprint-map-area" id="footprint-map-area">
+                        <!-- World Map Wrapper -->
+                        <div class="map-wrapper active" id="map-world-wrapper">
+                            <svg class="map-svg" viewBox="0 0 1000 500" fill="none">
+                                <!-- Simplified abstract continent vectors -->
+                                <!-- Greenland -->
+                                <path class="continent-path" d="M370,40 L440,25 L470,60 L410,95 L370,65 Z"
+                                    fill="#1b2336" stroke="rgba(255,255,255,0.05)" />
+                                <!-- North America -->
+                                <path class="continent-path"
+                                    d="M80,100 L250,70 L350,90 L390,140 L340,200 L290,240 L280,220 L270,250 L250,240 L195,310 L180,300 L180,250 L150,235 L120,230 L100,160 L80,130 Z"
+                                    fill="#1b2336" stroke="rgba(255,255,255,0.05)" />
+                                <!-- South America -->
+                                <path class="continent-path"
+                                    d="M195,310 L250,240 L260,250 L315,310 L335,355 L315,445 L290,490 L280,495 L275,490 L260,420 L210,355 Z"
+                                    fill="#1b2336" stroke="rgba(255,255,255,0.05)" />
+                                <!-- Eurasia -->
+                                <path class="continent-path"
+                                    d="M410,130 L460,95 L560,65 L700,55 L850,70 L930,95 L950,145 L880,245 L800,240 L730,270 L675,235 L625,260 L565,235 L500,225 L460,210 Z"
+                                    fill="#1b2336" stroke="rgba(255,255,255,0.05)" />
+                                <!-- Africa -->
+                                <path class="continent-path"
+                                    d="M460,210 L500,225 L565,235 L590,250 L630,290 L635,330 L590,430 L555,480 L525,485 L510,470 L480,390 L465,370 L445,285 L445,250 Z"
+                                    fill="#1b2336" stroke="rgba(255,255,255,0.05)" />
+                                <!-- Australia -->
+                                <path class="continent-path" d="M790,365 L865,375 L890,425 L845,465 L795,445 L780,410 Z"
+                                    fill="#1b2336" stroke="rgba(255,255,255,0.05)" />
+                            </svg>
+
+                            <!-- World Map Hotspots -->
+                            <div class="map-hotspot" style="left: 42%; top: 12%;" title="Greenland Hub">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 26%; top: 34%;" title="Chicago HQ">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 23%; top: 46%;" title="Mexico Office">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 29%; top: 62%;" title="Colombia Hub">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 33%; top: 74%;" title="Brazil Office">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 51%; top: 34%;" title="London Office">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                        </div>
+
+                        <!-- USA Map Wrapper -->
+                        <div class="map-wrapper" id="map-us-wrapper">
+                            <svg class="map-svg" viewBox="0 0 1000 600" fill="none">
+                                <!-- Simplified abstract US border -->
+                                <path class="continent-path"
+                                    d="M150,120 L350,110 L550,120 L750,140 L880,180 L900,280 L880,330 L840,360 L850,420 L810,460 L820,500 L790,520 L740,510 L680,490 L650,510 L610,510 L570,490 L520,500 L440,495 L370,455 L350,420 L270,390 L220,380 L180,360 L140,320 L110,240 L130,160 Z"
+                                    fill="#1b2336" stroke="rgba(255,255,255,0.05)" />
+                                <!-- Simplified State Grid lines -->
+                                <path
+                                    d="M250,115 L250,385 M350,110 L350,420 M450,115 L450,495 M550,120 L550,500 M650,123 L650,510 M750,140 L750,435 M850,170 L850,360 M150,220 L880,220 M150,300 L900,300 M270,390 L850,390"
+                                    stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+                            </svg>
+
+                            <!-- USA Hotspots -->
+                            <div class="map-hotspot" style="left: 22%; top: 68%;" title="California Hub">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 45%; top: 82%;" title="Texas Logistics Center">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 46%; top: 88%;" title="Houston Terminal">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 66%; top: 90%;" title="Miami Port">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 65%; top: 82%;" title="Jacksonville Center">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 55%; top: 70%;" title="Atlanta Distribution">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 56%; top: 52%;" title="Chicago Terminal">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 70%; top: 51%;" title="Philadelphia Warehouse">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                            <div class="map-hotspot" style="left: 71%; top: 49%;" title="New York Port">
+                                <span class="hotspot-dot"></span><span class="hotspot-pulse"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-      </div>
+    </section>
+
+    <!-- SVG DEFINITIONS FOR CARD NOTCH CLIP -->
+    <svg width="0" height="0" style="position: absolute; pointer-events: none;">
+        <defs>
+            <clipPath id="card-notch-clip" clipPathUnits="objectBoundingBox">
+                <path
+                    d="M 0.04,0 L 0.96,0 Q 1,0 1,0.04 L 1,0.96 Q 1,1 0.96,1 L 0.04,1 Q 0,1 0,0.96 L 0,0.58 C 0.025,0.58 0.038,0.55 0.038,0.52 L 0.038,0.32 C 0.038,0.29 0.025,0.26 0,0.26 L 0,0.04 Q 0,0 0.04,0 Z" />
+            </clipPath>
+            <!-- Single Centered Rounded Top Tab/Plateau ClipPath (Bezier Curves) -->
+            <clipPath id="section-top-tab-clip" clipPathUnits="objectBoundingBox">
+                <path
+                    d="M 0,0.008 L 0.33,0.008 C 0.35,0.008 0.35,0 0.37,0 L 0.63,0 C 0.65,0 0.65,0.008 0.67,0.008 L 1,0.008 L 1,1 L 0,1 Z" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <!-- CORE SOLUTIONS ACCORDION/SHOWCASE SECTION (PARALLEL SCROLL) -->
+    <section class="solutions-scroll-section" id="core-solutions">
+        <div class="solutions-sticky-container">
+            <!-- Section Header Title -->
+            <div class="solutions-header-wrapper">
+                <h2 class="animated-solutions-heading" id="animatedSolutionsHeading">
+                    <div class="heading-line-1">
+                        <span class="word">Our</span>
+                        <span class="word">Core</span>
+                        <span class="word">Solutions</span>
+                        <span class="word">for</span>
+                    </div>
+                    <div class="heading-line-2">
+                        <span class="word">Complex</span>
+                        <span class="word">Logistics</span>
+                        <span class="word">Demands</span>
+                    </div>
+                </h2>
+            </div>
+
+            <div class="solutions-grid">
+
+                <!-- Left Column: Solutions Text Stack -->
+                <div class="solutions-left">
+
+                    <!-- Solution Item 1 -->
+                    <div class="solution-text-item active" data-index="0">
+                        <div class="solution-meta">
+                            <span class="solution-num">01</span>
+                            <h2 class="solution-title">Ocean <span class="highlight-green">Freight</span></h2>
+                        </div>
+                        <p class="solution-desc">Full container load (FCL), less than container load (LCL), breakbulk,
+                            and chartering solutions worldwide.</p>
+                        <a href="#contact" class="solution-link">SEE MORE</a>
+                    </div>
+
+                    <!-- Solution Item 2 -->
+                    <div class="solution-text-item" data-index="1">
+                        <div class="solution-meta">
+                            <span class="solution-num">02</span>
+                            <h2 class="solution-title">Air <span class="highlight-green">Freight</span></h2>
+                        </div>
+                        <p class="solution-desc">Fast, priority air cargo for urgent shipments including consolidated,
+                            direct, and hand-carry options.</p>
+                        <a href="#contact" class="solution-link">SEE MORE</a>
+                    </div>
+
+                    <!-- Solution Item 3 -->
+                    <div class="solution-text-item" data-index="2">
+                        <div class="solution-meta">
+                            <span class="solution-num">03</span>
+                            <h2 class="solution-title">Customs <span class="highlight-green">Brokerage</span></h2>
+                        </div>
+                        <p class="solution-desc">Licensed U.S. customs brokerage with expert handling of entries, duty
+                            drawbacks, and compliance advisory.</p>
+                        <a href="#contact" class="solution-link">SEE MORE</a>
+                    </div>
+
+                    <!-- Solution Item 4 -->
+                    <div class="solution-text-item" data-index="3">
+                        <div class="solution-meta">
+                            <span class="solution-num">04</span>
+                            <h2 class="solution-title">Domestic <span class="highlight-green">Trucking</span></h2>
+                        </div>
+                        <p class="solution-desc">Nationwide freight transport across the U.S. with FTL, LTL, bonded
+                            trucking, and last-mile delivery options.</p>
+                        <a href="#contact" class="solution-link">SEE MORE</a>
+                    </div>
+
+                    <!-- Solution Item 5 -->
+                    <div class="solution-text-item" data-index="4">
+                        <div class="solution-meta">
+                            <span class="solution-num">05</span>
+                            <h2 class="solution-title">Project <span class="highlight-green">Cargo</span></h2>
+                        </div>
+                        <p class="solution-desc">End-to-end logistics for oversized, heavy, or sensitive cargo from site
+                            planning to secure delivery.</p>
+                        <a href="#contact" class="solution-link">SEE MORE</a>
+                    </div>
+
+                    <!-- Solution Item 6 -->
+                    <div class="solution-text-item" data-index="5">
+                        <div class="solution-meta">
+                            <span class="solution-num">06</span>
+                            <h2 class="solution-title">Warehousing &amp; <span
+                                    class="highlight-green">Distribution</span></h2>
+                        </div>
+                        <p class="solution-desc">Secure storage, pick &amp; pack, cross-docking, and just-in-time
+                            delivery across 9 U.S. warehouse facilities.</p>
+                        <a href="#contact" class="solution-link">SEE MORE</a>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Notched Card Media Container -->
+                <div class="solutions-right">
+                    <div class="notched-card-container">
+                        <div class="notched-card-slider" id="notchedCardSlider">
+
+                            <!-- Image 1 -->
+                            <div class="notched-card-item active" data-index="0">
+                                <img src="assets/ocean_freight_1785347817710.png" alt="Ocean Freight">
+                            </div>
+
+                            <!-- Image 2 -->
+                            <div class="notched-card-item" data-index="1">
+                                <img src="assets/air_freight_1785347828155.png" alt="Air Freight">
+                            </div>
+
+                            <!-- Image 3 -->
+                            <div class="notched-card-item" data-index="2">
+                                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Customs Brokerage">
+                            </div>
+
+                            <!-- Image 4 -->
+                            <div class="notched-card-item" data-index="3">
+                                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Domestic Trucking">
+                            </div>
+
+                            <!-- Image 5 -->
+                            <div class="notched-card-item" data-index="4">
+                                <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Project Cargo">
+                            </div>
+
+                            <!-- Image 6 -->
+                            <div class="notched-card-item" data-index="5">
+                                <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Warehousing &amp; Distribution">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK ACTIONS CTA SECTION -->
+    <section class="cta-section" id="quick-actions">
+        <div class="cta-grid-bg"></div>
+        <div class="cta-content">
+            <span class="cta-subtext">Quick access to essential tools</span>
+            <h2 class="cta-heading">Already Shipping<br>with <span class="highlight-green">Tranzport?</span></h2>
+            <div class="cta-buttons">
+                <button class="btn-white">Track a Shipment</button>
+                <button class="btn-glass">Make a Payment</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES 3D SECTION -->
+    <section class="case-studies-section" id="case-studies">
+        <div class="cs-header">
+            <div class="cs-header-text">
+                <span class="cs-subtitle">Case Study</span>
+                <h2 class="cs-title"><span class="highlight-green">Real Results from</span><br>Real Projects</h2>
+            </div>
+            <a href="#" class="btn-pill-green">View All Case Study</a>
+        </div>
+
+        <div class="cs-carousel-container" id="csCarouselContainer">
+            <div class="cs-carousel-track" id="csCarouselTrack">
+                <!-- Card 1 -->
+                <div class="cs-card dark-card">
+                    <div class="cs-card-date">April 25, 2026</div>
+                    <h3 class="cs-card-title">Containerized<br>Construction<br>Products</h3>
+                </div>
+                <!-- Card 2 -->
+                <div class="cs-card green-card">
+                    <div class="cs-card-date">January 30, 2025</div>
+                    <h3 class="cs-card-title">Aircraft Fuselage<br>Services</h3>
+                </div>
+                <!-- Card 3 -->
+                <div class="cs-card flip-container notched-shape" id="csFlipCard1">
+                    <div class="flip-inner">
+                        <!-- Front Face (White Placeholder) -->
+                        <div class="flip-face flip-front">
+                            <div class="cs-card-date">February 14, 2025</div>
+                            <h3 class="cs-card-title">Specialty Materials</h3>
+                        </div>
+                        <!-- Back Face (Full Image Card with Notch Silhouette) -->
+                        <div class="flip-face flip-back img-card">
+                            <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?auto=format&fit=crop&w=600&q=80"
+                                alt="Specialty Materials" class="cs-card-bg-img">
+                            <div class="cs-card-content-overlay">
+                                <div class="cs-card-date">February 14, 2025</div>
+                                <h3 class="cs-card-title">Specialty Materials</h3>
+                                <div class="cs-card-footer">
+                                    <span class="read-pill">Read Full Case</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="cs-card dark-card">
+                    <div class="cs-card-date">December 10, 2024</div>
+                    <h3 class="cs-card-title">Retail Supply<br>Optimization</h3>
+                </div>
+                <!-- Card 5 -->
+                <div class="cs-card green-card">
+                    <div class="cs-card-date">October 5, 2024</div>
+                    <h3 class="cs-card-title">Cold Chain<br>Logistics</h3>
+                </div>
+                <!-- Card 6 -->
+                <div class="cs-card flip-container notched-shape" id="csFlipCard2">
+                    <div class="flip-inner">
+                        <div class="flip-face flip-front">
+                            <div class="cs-card-date">August 22, 2024</div>
+                            <h3 class="cs-card-title">Warehouse<br>Automation</h3>
+                        </div>
+                        <div class="flip-face flip-back img-card">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8ed7c159c3?auto=format&fit=crop&w=600&q=80"
+                                alt="Warehouse" class="cs-card-bg-img">
+                            <div class="cs-card-content-overlay">
+                                <div class="cs-card-date">August 22, 2024</div>
+                                <h3 class="cs-card-title">Warehouse<br>Automation</h3>
+                                <div class="cs-card-footer">
+                                    <span class="read-pill">Read Full Case</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 7 -->
+                <div class="cs-card dark-card">
+                    <div class="cs-card-date">July 15, 2024</div>
+                    <h3 class="cs-card-title">Last Mile<br>Delivery Routing</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="cs-carousel-nav">
+            <div class="cs-progress">
+                <span class="cs-current" id="csCurrent">01</span>
+                <div class="cs-progress-bar">
+                    <div class="cs-progress-fill" id="csProgressFill"></div>
+                </div>
+                <span class="cs-total" id="csTotal">07</span>
+            </div>
+            <div class="cs-arrows">
+                <button class="cs-arrow prev" id="csPrevBtn" aria-label="Previous">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+                <button class="cs-arrow next" id="csNextBtn" aria-label="Next">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Drawer (Enterprise Logistics Control Center) -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="nav-drawer" id="navDrawer">
+        <!-- Drawer Header -->
+        <div class="drawer-header">
+            <div class="drawer-brand">
+                <span class="logo">TRANZPORT</span>
+                <span class="drawer-badge"><span class="status-dot"></span> DISPATCH ACTIVE</span>
+            </div>
+            <button class="close-btn" id="closeDrawer" aria-label="Close Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Drawer Body Grid -->
+        <div class="drawer-content-grid">
+            <!-- Main Navigation Links Column -->
+            <div class="drawer-nav-col">
+                <p class="drawer-section-tag">NAVIGATION</p>
+                <ul class="drawer-links">
+                    <li><a href="#hero" class="drawer-link" data-scroll="hero-container"><span
+                                class="link-num">01</span> Home <span class="link-arrow">→</span></a></li>
+                    <li><a href="#about" class="drawer-link" data-scroll="about"><span class="link-num">02</span> About
+                            Us <span class="link-arrow">→</span></a></li>
+                    <li><a href="#footprint-scroll-section" class="drawer-link"
+                            data-scroll="footprint-scroll-section"><span class="link-num">03</span> Global Footprint
+                            <span class="link-arrow">→</span></a></li>
+                    <li><a href="#core-solutions" class="drawer-link" data-scroll="core-solutions"><span
+                                class="link-num">04</span> Core Solutions <span class="link-arrow">→</span></a></li>
+                    <li><a href="#contact" class="drawer-link" data-scroll="contact"><span class="link-num">05</span>
+                            Contact Us <span class="link-arrow">→</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Enterprise Logistics Utilities Column -->
+            <div class="drawer-utility-col">
+                <div class="utility-card">
+                    <p class="utility-title">QUICK ACTIONS</p>
+                    <div class="utility-buttons">
+                        <button class="btn btn-primary drawer-btn">Request a Quote</button>
+                        <button class="btn btn-outline drawer-btn">Track a Shipment</button>
+                    </div>
+                </div>
+
+                <div class="utility-card info-card">
+                    <p class="utility-title">24/7 GLOBAL DISPATCH DESK</p>
+                    <a href="tel:+18005558726" class="dispatch-phone">+1 (800) 555-TRANZ</a>
+                    <a href="mailto:ops@tranzport.com" class="dispatch-email">ops@tranzport.com</a>
+                    <p class="dispatch-hubs">Hubs: Chicago • Rotterdam • Singapore</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="drawer-footer">
+            <span class="drawer-copyright">© 2026 TRANZPORT INC.</span>
+            <div class="drawer-socials">
+                <a href="#">LINKEDIN</a>
+                <a href="#">TWITTER / X</a>
+                <a href="#">ISO 9001</a>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <!-- ABOUT SECTION -->
-  <section class="about" id="about">
-    <div class="up-notch-divider" style="color: #0A1628; filter: drop-shadow(0 -5px 15px rgba(0,0,0,0.15));">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-        <path d="M0,60 L120,60 L120,0 L180,0 L180,60 L1440,60 Z" fill="currentColor"/>
-      </svg>
-    </div>
-    <div class="about-container">
-      <div class="about-content-grid">
-        <!-- Left Column -->
-        <div class="about-left">
-          <h3 class="about-label">About Us</h3>
-        </div>
-        
-        <!-- Right Column -->
-        <div class="about-right">
-          <h2 class="about-headline">
-            Global reach in 98+ countries<br>with a strong U.S. <span class="highlight-word">presence.</span>
-          </h2>
-          <p class="about-services-list">
-            Complete services: ocean, air, customs, trucking, warehousing, and project cargo.
-          </p>
-          <div class="about-description-box">
-            <p class="about-description">Trusted by Fortune 500 and mid-market leaders, LOGISTICS provides licensed freight forwarding and customs brokerage with transparency, compliance, and efficiency.</p>
-          </div>
-          <button class="btn btn-outline btn-sm" style="margin-top: 2rem;">More About Us</button>
-        </div>
-      </div>
-      
-      <!-- Badges Row Marquee -->
-      <div class="badges-marquee-container">
-        <div class="badges-marquee">
-          <!-- Set 1 -->
-          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>TIA</div>
-          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>NMFC</div>
-          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 17 22 12"></polyline></svg>CBP</div>
-          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><circle cx="12" cy="12" r="10"></circle><path d="M16 12l-4-4-4 4M12 8v8"></path></svg>FMC</div>
-          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>ISO 9001</div>
-          
-          <!-- Set 2 (Duplicate for infinite scroll) -->
-          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>TIA</div>
-          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>NMFC</div>
-          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 17 22 12"></polyline></svg>CBP</div>
-          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><circle cx="12" cy="12" r="10"></circle><path d="M16 12l-4-4-4 4M12 8v8"></path></svg>FMC</div>
-          <div class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>ISO 9001</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES SECTION (SCROLL TRACK) -->
-  <section class="services" id="services">
-    <div class="up-notch-divider" style="color: #e5e5e5; filter: drop-shadow(0 -5px 15px rgba(0,0,0,0.1));">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-        <path d="M0,60 L120,60 L120,0 L180,0 L180,60 L1440,60 Z" fill="currentColor"/>
-      </svg>
-    </div>
-    
-    <div class="services-header">
-      <h2 class="text-teal" style="font-size: clamp(2.5rem, 5vw, 4rem); text-align: center; margin-bottom: 5rem;">Our Core Solutions for<br><span class="text-dark" style="color: #0A1628;">Complex Logistics Demands</span></h2>
-    </div>
-
-    <!-- 500vh Scroll Track -->
-    <div class="services-scroll-track" id="services-track">
-      
-      <!-- Sticky Container -->
-      <div class="services-sticky-container">
-        
-        <!-- Panel 1 -->
-        <div class="service-panel active">
-          <div class="service-text-half">
-            <span class="service-num">01</span>
-            <div class="service-text">
-              <h3>Ocean Freight</h3>
-              <p>Full-container, partial, and specialized ocean freight solutions with global port coverage and regulatory compliance.</p>
-              <a href="#" class="see-more">SEE MORE</a>
-            </div>
-          </div>
-          <div class="service-media-half">
-            <div class="sticky-image-container">
-              <img src="assets/images/thumb-ocean.jpg" alt="Ocean Freight">
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 2 -->
-        <div class="service-panel">
-          <div class="service-text-half">
-            <span class="service-num">02</span>
-            <div class="service-text">
-              <h3>Air Freight</h3>
-              <p>Fast, priority air cargo for urgent shipments including consolidated, direct, and hand-carry options.</p>
-              <a href="#" class="see-more">SEE MORE</a>
-            </div>
-          </div>
-          <div class="service-media-half">
-            <div class="sticky-image-container">
-              <img src="assets/images/thumb-air.jpg" alt="Air Freight">
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 3 -->
-        <div class="service-panel">
-          <div class="service-text-half">
-            <span class="service-num">03</span>
-            <div class="service-text">
-              <h3>Customs Brokerage</h3>
-              <p>Licensed U.S. customs brokerage with expert handling of entries, duty drawbacks, and compliance advisory.</p>
-              <a href="#" class="see-more">SEE MORE</a>
-            </div>
-          </div>
-          <div class="service-media-half">
-            <div class="sticky-image-container">
-              <img src="assets/images/thumb-customs.jpg" alt="Customs Brokerage">
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 4 -->
-        <div class="service-panel">
-          <div class="service-text-half">
-            <span class="service-num">04</span>
-            <div class="service-text">
-              <h3>Domestic Trucking</h3>
-              <p>Nationwide freight transport across the U.S. with FTL, LTL, bonded trucking, and last-mile delivery options.</p>
-              <a href="#" class="see-more">SEE MORE</a>
-            </div>
-          </div>
-          <div class="service-media-half">
-            <div class="sticky-image-container">
-              <img src="assets/images/thumb-warehouse.jpg" alt="Domestic Trucking">
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel 5 -->
-        <div class="service-panel">
-          <div class="service-text-half">
-            <span class="service-num">05</span>
-            <div class="service-text">
-              <h3>Project Cargo</h3>
-              <p>End-to-end logistics for oversized, heavy, or sensitive cargo from site planning to secure delivery.</p>
-              <a href="#" class="see-more">SEE MORE</a>
-            </div>
-          </div>
-          <div class="service-media-half">
-            <div class="sticky-image-container">
-              <img src="assets/images/thumb-project.jpg" alt="Project Cargo">
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
