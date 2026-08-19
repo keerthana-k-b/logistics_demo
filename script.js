@@ -307,12 +307,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (totalHeight <= 0) return;
 
-        // Calculate progress from 0 to 1
+        // Calculate progress from 0 to 1 with an exit hold buffer for the final item
         const progress = Math.max(0, Math.min(1, -rect.top / totalHeight));
         const totalItems = solutionTextItems.length;
         
-        // Determine active index (0 to 5)
-        const activeIndex = Math.min(totalItems - 1, Math.floor(progress * totalItems));
+        // Distribute items across 0..0.88 scroll progress so Item 5 has full viewing duration
+        const activeIndex = Math.min(totalItems - 1, Math.floor(progress * (totalItems + 0.6)));
 
         if (activeIndex !== currentSolutionIndex) {
             currentSolutionIndex = activeIndex;
@@ -627,4 +627,106 @@ document.addEventListener('DOMContentLoaded', () => {
 
         headingObserver.observe(animatedHeading);
     }
+
+    // --- Enterprise Bottom Section & Quote Modal Handlers ---
+    const quoteModal = document.getElementById('quoteModalBackdrop');
+    const openQuoteBtn = document.getElementById('openBottomQuoteBtn');
+    const openExpertBtn = document.getElementById('openBottomExpertBtn');
+    const closeQuoteBtn = document.getElementById('closeQuoteModal');
+    const quoteForm = document.getElementById('freightQuoteForm');
+    const quoteFeedback = document.getElementById('quoteFeedback');
+    const modePills = document.querySelectorAll('.mode-pill');
+
+    const openModal = (defaultMode = 'ocean') => {
+        if (quoteModal) {
+            quoteModal.classList.add('is-active');
+            document.body.style.overflow = 'hidden'; // Lock scroll when modal is active
+
+            // Reset feedback
+            if (quoteFeedback) quoteFeedback.style.display = 'none';
+
+            // Set active mode
+            modePills.forEach(pill => {
+                const radio = pill.querySelector('input[type="radio"]');
+                if (radio && radio.value === defaultMode) {
+                    radio.checked = true;
+                    pill.classList.add('active');
+                } else {
+                    pill.classList.remove('active');
+                }
+            });
+        }
+    };
+
+    const closeModal = () => {
+        if (quoteModal) {
+            quoteModal.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+    };
+
+    // Listen for all quote buttons across the page
+    const allQuoteButtons = document.querySelectorAll('#openBottomQuoteBtn, .hero-cta .btn-primary, .drawer-btn.btn-primary');
+    allQuoteButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('ocean');
+        });
+    });
+
+    if (openExpertBtn) {
+        openExpertBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('customs');
+        });
+    }
+
+    if (closeQuoteBtn) {
+        closeQuoteBtn.addEventListener('click', closeModal);
+    }
+
+    if (quoteModal) {
+        quoteModal.addEventListener('click', (e) => {
+            if (e.target === quoteModal) {
+                closeModal();
+            }
+        });
+    }
+
+    // Keyboard ESC to close modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && quoteModal && quoteModal.classList.contains('is-active')) {
+            closeModal();
+        }
+    });
+
+    // Handle Mode Pills Click
+    modePills.forEach(pill => {
+        pill.addEventListener('click', () => {
+            modePills.forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+        });
+    });
+
+    // Handle Form Submit
+    if (quoteForm) {
+        quoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitQuoteBtn');
+            if (submitBtn) {
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<span>Routing to Dispatch Desk...</span>';
+                submitBtn.disabled = true;
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    if (quoteFeedback) {
+                        quoteFeedback.style.display = 'block';
+                    }
+                }, 900);
+            }
+        });
+    }
 });
+
