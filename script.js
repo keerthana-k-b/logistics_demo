@@ -127,10 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const updateSlider = () => {
-        // Calculate translation dynamically based on current card width + gap
-        const cardWidth = cards[0] ? cards[0].offsetWidth : 320;
-        const gap = window.innerWidth <= 768 ? 16 : 24;
-        const translateX = -(currentIndex * (cardWidth + gap));
+        // Calculate translation (Card width 320px + gap 24px)
+        const translateX = -(currentIndex * 344);
         slider.style.transform = `translateX(${translateX}px)`;
         
         // Update classes for opacity
@@ -152,44 +150,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlider();
     };
 
-    const prevSlide = () => {
-        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-        updateSlider();
-    };
-
     // Autoplay interval (every 3.5 seconds)
-    let sliderTimer = null;
-    const startSliderAutoplay = () => {
-        if (sliderTimer) clearInterval(sliderTimer);
-        sliderTimer = setInterval(nextSlide, 3500);
-    };
-
     if (slider) {
-        startSliderAutoplay();
-
-        // Touch Swipe Handling on Mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-        const carouselWrap = document.querySelector('.carousel-wrapper');
-
-        if (carouselWrap) {
-            carouselWrap.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-
-            carouselWrap.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                const diffX = touchStartX - touchEndX;
-                if (Math.abs(diffX) > 40) {
-                    if (diffX > 0) {
-                        nextSlide();
-                    } else {
-                        prevSlide();
-                    }
-                    startSliderAutoplay();
-                }
-            }, { passive: true });
-        }
+        setInterval(nextSlide, 3500);
     }
 
     // Footprint Map Interaction (Scroll & Auto-Rotate)
@@ -376,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Floating Navbar Logic
     const floatingNavbar = document.getElementById('floatingNavbar');
     const heroSection = document.querySelector('.hero-container');
-    const sections = document.querySelectorAll('section[id], footer[id]');
+    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.floating-link');
     
     let lastScrollY = window.scrollY;

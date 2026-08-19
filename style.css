@@ -18,19 +18,11 @@
     box-sizing: border-box;
 }
 
-html {
-    overflow-x: hidden;
-    max-width: 100%;
-    width: 100%;
-}
-
 body {
     font-family: var(--font-main);
     background-color: var(--bg-dark);
     color: var(--text-primary);
     overflow-x: hidden;
-    max-width: 100%;
-    width: 100%;
     position: relative;
     line-height: 1.5;
 }
@@ -40,14 +32,13 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
     justify-content: space-between;
     padding: 0 10vw;
     pointer-events: none;
     z-index: 0;
-    overflow: hidden;
 }
 
 .grid-line {
@@ -233,18 +224,14 @@ body {
     /* Align to bottom */
     justify-content: flex-end;
     flex: 1;
-    min-width: 0;
     margin-left: 2rem;
     padding-bottom: 2rem;
     /* Give it some breathing room from the very bottom edge */
-    overflow: hidden;
 }
 
 .services-slider {
     width: 100%;
     max-width: 550px;
-    min-width: 0;
-    overflow: hidden;
 }
 
 .slider-header {
@@ -280,8 +267,6 @@ body {
 
 .carousel-wrapper {
     width: 100%;
-    max-width: 100%;
-    min-width: 0;
     overflow: hidden;
     padding: 10px 0;
     /* To prevent shadow clipping */
@@ -960,8 +945,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(8px);
     z-index: 999;
@@ -1324,209 +1309,17 @@ body {
 }
 
 @media (max-width: 768px) {
-    /* Hero Container & Notch */
-    .hero-container {
-        height: auto;
-        min-height: auto;
-        padding-bottom: 2.2rem;
+    .title {
+        font-size: 2.5rem;
     }
 
-    .hero-container .hero-bg.notch-bottom {
-        clip-path: polygon(
-            0 0,
-            100% 0,
-            100% 100%,
-            78% 100%,
-            73% calc(100% - 22px),
-            27% calc(100% - 22px),
-            22% 100%,
-            0 100%
-        );
-    }
-
-    .hero-container .hero-overlay {
-        background: linear-gradient(180deg, rgba(5, 6, 11, 0.75) 0%, rgba(5, 6, 11, 0.92) 100%);
-    }
-
-    /* Navbar */
-    .navbar {
-        padding: 1rem 1.25rem 0.25rem;
-    }
-
-    .logo {
-        font-size: 1.35rem;
-        letter-spacing: 1.5px;
-    }
-
-    .menu-btn {
-        width: 40px;
-        height: 40px;
-    }
-
-    /* Hero Content Structure */
-    .hero-container .hero-content {
-        padding: 0.75rem 1.25rem 1rem;
-        height: auto;
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 1.25rem;
-    }
-
-    .hero-container .hero-left {
-        max-width: 100%;
+    .glass-panel {
         width: 100%;
-    }
-
-    .hero-container .subtitle {
-        font-size: 0.75rem;
-        letter-spacing: 0.6px;
-        color: #8b95a5;
-        margin-bottom: 0.45rem;
-        font-weight: 500;
-        text-transform: none;
-    }
-
-    .hero-container .title {
-        font-size: 1.95rem; /* ~31px - noticeably smaller & compact */
-        font-weight: 600;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        margin-bottom: 1.2rem;
-    }
-
-    /* Compact Auto-Width Pill CTA Buttons */
-    .hero-container .hero-cta {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.55rem;
-        width: 100%;
-    }
-
-    .hero-container .hero-cta .btn {
-        width: auto;
-        max-width: 100%;
-        padding: 0.7rem 1.65rem;
-        font-size: 0.88rem;
-        font-weight: 600;
-        border-radius: 999px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .hero-container .hero-cta .btn-primary {
-        background-color: var(--accent-green);
-        color: #000;
-        box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
-    }
-
-    .hero-container .hero-cta .btn-secondary {
-        background-color: rgba(255, 255, 255, 0.05);
-        color: #ffffff;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        backdrop-filter: blur(12px);
-    }
-
-    /* Services Slider on Mobile */
-    .hero-container .hero-right {
-        width: 100%;
-        margin-left: 0;
-        padding-bottom: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .hero-container .services-slider {
-        width: 100%;
-        max-width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Reverse order: Card first, progress bar at bottom */
-    .hero-container .carousel-wrapper {
-        order: 1;
-        width: 100%;
-        overflow: hidden;
-        padding: 2px 0;
-    }
-
-    .hero-container .cards-container {
-        gap: 0.85rem;
-    }
-
-    .hero-container .glass-panel {
-        width: 275px;
-        max-width: calc(100vw - 2.5rem);
-        background: rgba(18, 23, 38, 0.65);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 14px;
-        padding: 0.65rem 0.8rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        max-width: 320px;
     }
 
     .secondary-card {
         display: none;
-    }
-
-    .hero-container .card-img-wrapper {
-        width: 54px;
-        height: 54px;
-        border-radius: 8px;
-        flex-shrink: 0;
-        overflow: hidden;
-    }
-
-    .hero-container .card-info h3 {
-        font-size: 0.88rem;
-        font-weight: 600;
-        margin-bottom: 0.15rem;
-        color: #ffffff;
-    }
-
-    .hero-container .card-info p {
-        font-size: 0.68rem;
-        color: #8b95a5;
-        line-height: 1.25;
-    }
-
-    .hero-container .slider-header {
-        order: 2;
-        margin-top: 1rem;
-        margin-bottom: 0;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        gap: 0.85rem;
-        font-size: 0.75rem;
-        color: #8b95a5;
-    }
-
-    .hero-container .slide-num {
-        font-weight: 600;
-    }
-
-    .hero-container .slide-num.active {
-        color: #ffffff;
-    }
-
-    .hero-container .progress-bar {
-        flex: 1;
-        height: 2px;
-        background: rgba(255, 255, 255, 0.15);
-        border-radius: 2px;
-    }
-
-    .hero-container .progress {
-        background: #ffffff;
-        border-radius: 2px;
     }
 
     .solution-title {
@@ -2587,8 +2380,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: rgba(3, 6, 12, 0.85);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
