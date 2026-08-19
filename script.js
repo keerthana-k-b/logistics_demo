@@ -126,9 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
         cards[0].classList.add('active-card');
     }
 
-    const updateSlider = () => {
-        // Calculate translation (Card width 320px + gap 24px)
-        const translateX = -(currentIndex * 344);
+        // Calculate translation dynamically based on current card width + gap
+        const cardWidth = cards[0] ? cards[0].offsetWidth : 320;
+        const gap = window.innerWidth <= 768 ? 16 : 24;
+        const translateX = -(currentIndex * (cardWidth + gap));
         slider.style.transform = `translateX(${translateX}px)`;
         
         // Update classes for opacity
@@ -339,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Floating Navbar Logic
     const floatingNavbar = document.getElementById('floatingNavbar');
     const heroSection = document.querySelector('.hero-container');
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('section[id], footer[id]');
     const navLinks = document.querySelectorAll('.floating-link');
     
     let lastScrollY = window.scrollY;
