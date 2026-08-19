@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cards[0].classList.add('active-card');
     }
 
+    const updateSlider = () => {
         // Calculate translation dynamically based on current card width + gap
         const cardWidth = cards[0] ? cards[0].offsetWidth : 320;
         const gap = window.innerWidth <= 768 ? 16 : 24;
@@ -151,9 +152,44 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSlider();
     };
 
+    const prevSlide = () => {
+        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+        updateSlider();
+    };
+
     // Autoplay interval (every 3.5 seconds)
+    let sliderTimer = null;
+    const startSliderAutoplay = () => {
+        if (sliderTimer) clearInterval(sliderTimer);
+        sliderTimer = setInterval(nextSlide, 3500);
+    };
+
     if (slider) {
-        setInterval(nextSlide, 3500);
+        startSliderAutoplay();
+
+        // Touch Swipe Handling on Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const carouselWrap = document.querySelector('.carousel-wrapper');
+
+        if (carouselWrap) {
+            carouselWrap.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carouselWrap.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const diffX = touchStartX - touchEndX;
+                if (Math.abs(diffX) > 40) {
+                    if (diffX > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                    startSliderAutoplay();
+                }
+            }, { passive: true });
+        }
     }
 
     // Footprint Map Interaction (Scroll & Auto-Rotate)
