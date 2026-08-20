@@ -295,6 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const solutionsSection = document.getElementById('core-solutions');
     const solutionTextItems = document.querySelectorAll('.solution-text-item');
     const notchedCardSlider = document.getElementById('notchedCardSlider');
+    const solutionDots = document.querySelectorAll('.sol-dot');
 
     let currentSolutionIndex = -1;
 
@@ -326,9 +327,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Slide vertical card reel to active solution
+            // Update progress dots (mobile)
+            solutionDots.forEach((dot, idx) => {
+                if (idx === activeIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            // Slide vertical card reel to active solution.
+            // Read the live rendered height of a card item so the step is correct
+            // on every breakpoint (350px desktop / 320px tablet / 210px mobile).
             if (notchedCardSlider) {
-                notchedCardSlider.style.transform = `translateY(-${activeIndex * 350}px)`;
+                const cardItem = notchedCardSlider.querySelector('.notched-card-item');
+                const cardHeight = cardItem ? cardItem.offsetHeight : 350;
+                notchedCardSlider.style.transform = `translateY(-${activeIndex * cardHeight}px)`;
             }
         }
     };

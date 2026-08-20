@@ -940,6 +940,26 @@ body {
     display: block;
 }
 
+/* Progress dots — hidden on desktop, shown only in mobile media query */
+.solutions-progress-dots {
+    display: none;
+}
+
+.sol-dot {
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: 0.5px;
+    color: #9ca3af;
+    transition: color 0.35s ease;
+    cursor: default;
+    user-select: none;
+}
+
+.sol-dot.active {
+    color: #111827;
+}
+
 /* Navigation Drawer (Enterprise Logistics Control Center) */
 .drawer-overlay {
     position: fixed;
@@ -1328,6 +1348,139 @@ body {
 
     .solution-desc {
         font-size: 1rem;
+    }
+
+    /* ============================================================
+       CORE SOLUTIONS — MOBILE LAYOUT  (375px–768px)
+       Stack order: heading → image card → dots → active text
+       Scroll-driven mechanism (sticky + JS) remains untouched.
+       ============================================================ */
+
+    /* Reduce overall container padding so elements breathe better */
+    .solutions-sticky-container {
+        padding: 1.5rem 1.2rem 1.8rem;
+        justify-content: flex-start;
+        gap: 0;
+    }
+
+    /* Tighten the header wrapper */
+    .solutions-header-wrapper {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    /* Shrink heading to 3-line fit */
+    .animated-solutions-heading {
+        text-align: center;
+    }
+
+    .heading-line-1 {
+        font-size: 1.55rem;
+    }
+
+    .heading-line-2 {
+        font-size: 1.7rem;
+    }
+
+    /* Grid: column flex, right (image) above left (text) */
+    .solutions-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Image column — order 1 (top) */
+    .solutions-right {
+        order: 1;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+    }
+
+    /* Notched card: full width, compact height */
+    .notched-card-container {
+        width: 100%;
+        max-width: 100%;
+        height: 210px;
+    }
+
+    .notched-card-item {
+        height: 210px;
+    }
+
+    /* Progress dots row — order 2 (between image and text) */
+    .solutions-progress-dots {
+        display: flex;
+        order: 2;
+        justify-content: center;
+        align-items: center;
+        gap: 1.1rem;
+        padding: 0.65rem 0 0.8rem;
+    }
+
+    /* Text column — order 3 (bottom); switch from absolute stacking
+       to static flow so the active item expands naturally */
+    .solutions-left {
+        order: 3;
+        position: relative;
+        height: auto;
+        min-height: 160px;
+        flex: none;
+        width: 100%;
+    }
+
+    /* All text items: absolute → relative so they participate in flow */
+    .solution-text-item {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        overflow: hidden;
+        pointer-events: none;
+        text-align: center;
+        /* Keep the same fade transition */
+        transition: opacity 0.45s ease, visibility 0.45s ease;
+    }
+
+    /* Active item: fully visible, auto height */
+    .solution-text-item.active {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        height: auto;
+        overflow: visible;
+        pointer-events: auto;
+    }
+
+    /* Compact meta row on mobile — centered as a pair */
+    .solution-meta {
+        gap: 0.8rem;
+        margin-bottom: 0.8rem;
+        justify-content: center;
+    }
+
+    .solution-title {
+        font-size: 1.9rem;
+        text-align: center;
+    }
+
+    .solution-desc {
+        font-size: 0.95rem;
+        max-width: 92%;
+        margin: 0 auto 1.2rem;
+        text-align: center;
+    }
+
+    .solution-link {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+        text-align: center;
     }
 }
 
