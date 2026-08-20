@@ -1342,13 +1342,6 @@ body {
         display: none;
     }
 
-    .solution-title {
-        font-size: 2.2rem;
-    }
-
-    .solution-desc {
-        font-size: 1rem;
-    }
 
     /* ============================================================
        CORE SOLUTIONS — MOBILE LAYOUT  (375px–768px)
@@ -1457,21 +1450,22 @@ body {
         pointer-events: auto;
     }
 
-    /* Compact meta row on mobile — centered as a pair */
+    /* Number stacked above title, both centered as one unit */
     .solution-meta {
-        gap: 0.8rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
         margin-bottom: 0.8rem;
-        justify-content: center;
     }
 
     .solution-title {
-        font-size: 1.9rem;
+        font-size: 1.9rem;          /* consolidated from earlier duplicate */
         text-align: center;
     }
 
     .solution-desc {
         font-size: 0.95rem;
-        max-width: 92%;
+        max-width: min(90%, 360px);
         margin: 0 auto 1.2rem;
         text-align: center;
     }
