@@ -246,26 +246,30 @@ document.addEventListener('DOMContentLoaded', () => {
     startFootprintAutoRotate();
 
     // Navigation Drawer Logic
-    const menuBtn = document.querySelector('.menu-btn');
+    const menuBtns = document.querySelectorAll('.menu-btn');
     const closeDrawerBtn = document.getElementById('closeDrawer');
     const navDrawer = document.getElementById('navDrawer');
     const drawerOverlay = document.getElementById('drawerOverlay');
     const drawerLinks = document.querySelectorAll('.drawer-link');
 
     const openDrawer = () => {
-        navDrawer.classList.add('active');
-        drawerOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        if (navDrawer && drawerOverlay) {
+            navDrawer.classList.add('active');
+            drawerOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
     };
 
     const closeDrawer = () => {
-        navDrawer.classList.remove('active');
-        drawerOverlay.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
+        if (navDrawer && drawerOverlay) {
+            navDrawer.classList.remove('active');
+            drawerOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
     };
 
-    if (menuBtn && closeDrawerBtn && navDrawer && drawerOverlay) {
-        menuBtn.addEventListener('click', openDrawer);
+    if (closeDrawerBtn && navDrawer && drawerOverlay) {
+        menuBtns.forEach(btn => btn.addEventListener('click', openDrawer));
         closeDrawerBtn.addEventListener('click', closeDrawer);
         drawerOverlay.addEventListener('click', closeDrawer);
 
@@ -350,8 +354,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateSolutionsScroll, { passive: true });
     updateSolutionsScroll();
 
-    // Floating Navbar Logic
+    // Floating Navbar & Mobile Menu Button Logic
     const floatingNavbar = document.getElementById('floatingNavbar');
+    const mobileFloatingMenuBtn = document.getElementById('mobileFloatingMenuBtn');
     const heroSection = document.querySelector('.hero-container');
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.floating-link');
@@ -361,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isHoveringTop = false;
     
     const checkNavbarVisibility = () => {
-        if (!floatingNavbar) return;
+        if (!floatingNavbar && !mobileFloatingMenuBtn) return;
         const currentScrollY = window.scrollY;
         const heroBottom = heroSection ? (heroSection.getBoundingClientRect().bottom + window.scrollY) : 500;
         
@@ -383,15 +388,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     const showNavbar = () => {
-        if (!isNavbarVisible && floatingNavbar) {
-            floatingNavbar.classList.add('visible');
+        if (!isNavbarVisible) {
+            if (floatingNavbar) floatingNavbar.classList.add('visible');
+            if (mobileFloatingMenuBtn) mobileFloatingMenuBtn.classList.add('visible');
             isNavbarVisible = true;
         }
     };
     
     const hideNavbar = () => {
-        if (isNavbarVisible && !isHoveringTop && floatingNavbar) {
-            floatingNavbar.classList.remove('visible');
+        if (isNavbarVisible && !isHoveringTop) {
+            if (floatingNavbar) floatingNavbar.classList.remove('visible');
+            if (mobileFloatingMenuBtn) mobileFloatingMenuBtn.classList.remove('visible');
             isNavbarVisible = false;
         }
     };
@@ -579,11 +586,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Pause autoplay when user hovers or touches the carousel
+        // Pause autoplay when user hovers the carousel (desktop)
         csContainer.addEventListener('mouseenter', stopAutoplay);
         csContainer.addEventListener('mouseleave', startAutoplay);
-        csContainer.addEventListener('touchstart', stopAutoplay, { passive: true });
-        csContainer.addEventListener('touchend', startAutoplay, { passive: true });
+
+        // On mobile: add .is-user-scrolling on touchstart to enable mandatory
+        // snap immediately (so swipes land on a card), and remove it only after
+        // a 600ms delay on touchend — giving the browser's post-swipe snap
+        // animation time to settle before autoplay resumes.
+        let snapResetTimer = null;
+        csContainer.addEventListener('touchstart', () => {
+            isPaused = true;
+            if (snapResetTimer) clearTimeout(snapResetTimer);
+            csContainer.classList.add('is-user-scrolling');
+        }, { passive: true });
+
+        csContainer.addEventListener('touchend', () => {
+            snapResetTimer = setTimeout(() => {
+                csContainer.classList.remove('is-user-scrolling');
+                isPaused = false;
+            }, 600); // wait for snap animation to complete before resuming autoplay
+        }, { passive: true });
 
         // Listen for scroll on the container
         csContainer.addEventListener('scroll', updateCards3D, { passive: true });
@@ -601,8 +624,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const flipObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                // Ensure the entire card is clearly visible before starting animation
-                if (entry.isIntersecting && entry.intersectionRatio >= 0.8) {
+                // Fire when card is clearly centred in the scroll container's viewport
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
                     const card = entry.target;
                     
                     // Hold the white placeholder state for exactly 0.5s before flipping
@@ -618,7 +641,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     observer.unobserve(card);
                 }
             });
-        }, { threshold: 0.8 }); // Card must be 80% visible
+        }, {
+            // Observe relative to the carousel container so cards inside a
+            // horizontal scroll box are correctly detected on mobile.
+            // Falls back to viewport if csContainer is null.
+            root: csContainer,
+            rootMargin: '0px',
+            threshold: 0.5   // 50% of the card visible within the container
+        });
         
         flipCards.forEach(card => {
             flipObserver.observe(card);
