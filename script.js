@@ -178,12 +178,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update timeline fill indicator position
         if (timelineFill) {
-            if (mapId === 'world') {
-                timelineFill.style.top = '0';
-                timelineFill.style.transform = 'translateY(0)';
+            const isMobile = window.innerWidth <= 768;
+            if (isMobile) {
+                if (mapId === 'world') {
+                    timelineFill.style.left = '0';
+                    timelineFill.style.transform = 'translateX(0)';
+                } else {
+                    timelineFill.style.left = '100%';
+                    timelineFill.style.transform = 'translateX(-100%)';
+                }
+                timelineFill.style.top = '';
             } else {
-                timelineFill.style.top = '100%';
-                timelineFill.style.transform = 'translateY(-100%)';
+                if (mapId === 'world') {
+                    timelineFill.style.top = '0';
+                    timelineFill.style.transform = 'translateY(0)';
+                } else {
+                    timelineFill.style.top = '100%';
+                    timelineFill.style.transform = 'translateY(-100%)';
+                }
+                timelineFill.style.left = '';
             }
         }
 
@@ -228,8 +241,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Dynamically slide the white indicator line with scroll position
             if (timelineFill) {
-                timelineFill.style.top = `${progress * 100}%`;
-                timelineFill.style.transform = `translateY(-${progress * 100}%)`;
+                const isMobile = window.innerWidth <= 768;
+                if (isMobile) {
+                    timelineFill.style.left = `${progress * 100}%`;
+                    timelineFill.style.transform = `translateX(-${progress * 100}%)`;
+                    timelineFill.style.top = '';
+                } else {
+                    timelineFill.style.top = `${progress * 100}%`;
+                    timelineFill.style.transform = `translateY(-${progress * 100}%)`;
+                    timelineFill.style.left = '';
+                }
             }
 
             // Switch maps automatically at midpoint
@@ -242,6 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.addEventListener('scroll', updateFootprintScroll, { passive: true });
+    window.addEventListener('resize', () => {
+        switchFootprintStep(currentFootprintMap);
+    }, { passive: true });
     updateFootprintScroll();
     startFootprintAutoRotate();
 
